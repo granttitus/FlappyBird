@@ -26,9 +26,9 @@ public class Bird {
     public Image getImage () {
 
         if (image == null) {
-            image = Util.loadImage("lib/bird.png");     
+            image = Util.loadImage("../lib/bird.png");
         }
-        
+
         return image;
     }
 }
