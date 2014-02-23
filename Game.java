@@ -12,9 +12,5 @@ public class Game {
 
     public void update(){
     	bird.update();
-
-        if (keyboard.isDown(KeyEvent.VK_SPACE)) {
-            System.out.println("space is down!");
-        }
     }
 }
