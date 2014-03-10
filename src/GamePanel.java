@@ -4,12 +4,11 @@ import java.awt.event.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    private Bird bird;
+    private Background bg;
     private Game game;
 
     public GamePanel () {
         game = new Game();
-        bird = game.bird;
 
         new Thread(this).start();
     }
@@ -23,7 +22,9 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         g.setColor(Color.GREEN);
-        g.drawImage(bird.getImage(), bird.x, bird.y, null);
+
+        for (Render r : game.getRenders())
+            g.drawImage(r.image, r.x, r.y, null);
     }
     
     public void run () {
