@@ -9,6 +9,8 @@ public class Game {
 
     public Boolean paused;
     public Boolean gameover;
+    public Boolean started;
+
     public int pauseDelay;
     public int restartDelay;
 
@@ -19,24 +21,14 @@ public class Game {
         restart();
     }
 
-    public ArrayList<Render> getRenders() {
-        ArrayList<Render> renders = new ArrayList<Render>();
-        renders.add(background.getRender());
-        renders.add(bird.getRender());
-        return renders;
-    }
-
-    public void restart () {
-        bird = new Bird();
-
-        paused = false;
-        gameover = false;
-
-        pauseDelay = 0;
-        restartDelay = 0;
-    }
-
     public void update () {
+
+        if (!started && keyboard.isDown(KeyEvent.VK_SPACE)) {
+            started = true;
+        }
+
+        if (!started)
+            return;
 
         if (pauseDelay > 0)
             pauseDelay--;
@@ -65,5 +57,23 @@ public class Game {
                 bird.y = App.HEIGHT - 80 - bird.height;
             }
         }
+    }
+
+    public void restart () {
+        bird = new Bird();
+
+        paused = false;
+        gameover = false;
+        started = false;
+
+        pauseDelay = 0;
+        restartDelay = 0;
+    }
+    
+    public ArrayList<Render> getRenders() {
+        ArrayList<Render> renders = new ArrayList<Render>();
+        renders.add(background.getRender());
+        renders.add(bird.getRender());
+        return renders;
     }
 }
