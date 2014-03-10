@@ -12,7 +12,7 @@ public class Game {
         bird = new Bird();
     }
 
-    public void update(){
+    public void update() {
     	if (pauseDelay > 0)
             pauseDelay--;
 

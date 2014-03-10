@@ -24,7 +24,7 @@ public class Bird {
         yvel = 0;
         width = 40;
         height = 40;
-        gravity = 0.6;
+        gravity = 0.5;
         jumpDelay = 0;
 
         keyboard = Keyboard.getInstance();
