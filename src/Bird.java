@@ -20,10 +20,10 @@ public class Bird {
 
     public Bird () {
         x = 100;
-        y = 200;
+        y = 150;
         yvel = 0;
-        width = 40;
-        height = 40;
+        width = 45;
+        height = 32;
         gravity = 0.5;
         jumpDelay = 0;
 
@@ -44,12 +44,17 @@ public class Bird {
         y += (int)yvel;
     }
 
-    public Image getImage () {
+    public Render getRender() {
+
+        Render r = new Render();
+        r.x = x;
+        r.y = y;
 
         if (image == null) {
             image = Util.loadImage("lib/bird.png");     
         }
-        
-        return image;
+        r.image = image;
+
+        return r;
     }
 }
