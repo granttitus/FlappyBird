@@ -44,6 +44,7 @@ public class Game {
         if (keyboard.isDown(KeyEvent.VK_R) && restartDelay <= 0) {
             restart();
             restartDelay = 10;
+            return;
         }
 
         if (!paused && !gameover) {
