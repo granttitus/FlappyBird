@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -23,8 +24,12 @@ public class GamePanel extends JPanel implements Runnable {
 
         g.setColor(Color.GREEN);
 
+        Graphics2D g2D = (Graphics2D) g;
         for (Render r : game.getRenders())
-            g.drawImage(r.image, r.x, r.y, null);
+            if (r.transform != null)
+                g2D.drawImage(r.image, r.transform, null);
+            else
+                g.drawImage(r.image, r.x, r.y, null);
     }
     
     public void run () {

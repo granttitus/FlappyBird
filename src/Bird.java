@@ -1,5 +1,6 @@
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.geom.AffineTransform;
 
 public class Bird {
 
@@ -8,12 +9,11 @@ public class Bird {
     public int width;
     public int height;
 
-    // y velocity
     public double yvel;
     public double gravity;
 
-    // delay between key presses
     private int jumpDelay;
+    private double rotation = 0.0;
 
     private Image image;
     private Keyboard keyboard;
@@ -45,7 +45,6 @@ public class Bird {
     }
 
     public Render getRender() {
-
         Render r = new Render();
         r.x = x;
         r.y = y;
@@ -54,6 +53,17 @@ public class Bird {
             image = Util.loadImage("lib/bird.png");     
         }
         r.image = image;
+
+        rotation = (90 * (yvel + 20) / 20) - 90;
+        rotation = rotation * Math.PI / 180;
+
+        if (rotation > Math.PI / 2)
+            rotation = Math.PI / 2;
+
+        r.transform = new AffineTransform();
+        r.transform.translate(x + width / 2, y + height / 2);
+        r.transform.rotate(rotation);
+        r.transform.translate(-width / 2, -height / 2);
 
         return r;
     }
