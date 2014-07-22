@@ -1,3 +1,3 @@
 ## Flappy Bird
 
-![Alt text](http://i.imgur.com/hPIdpwU.png?1?2129)
+![Alt text](http://i.imgur.com/CVAJc7b.png)
