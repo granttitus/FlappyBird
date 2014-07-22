@@ -18,7 +18,7 @@ public class Bird {
     private Image image;
     private Keyboard keyboard;
 
-    public Bird () {
+    public Bird() {
         x = 100;
         y = 150;
         yvel = 0;
@@ -30,7 +30,7 @@ public class Bird {
         keyboard = Keyboard.getInstance();
     }
 
-    public void update () {
+    public void update() {
         yvel += gravity;
 
         if (jumpDelay > 0)
