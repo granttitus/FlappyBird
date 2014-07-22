@@ -5,21 +5,19 @@ import java.awt.geom.*;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    private Background bg;
     private Game game;
 
-    public GamePanel () {
+    public GamePanel() {
         game = new Game();
-
         new Thread(this).start();
     }
 
-    public void update () {
+    public void update() {
         game.update();
         repaint();
     }
 
-    protected void paintComponent (Graphics g) {
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         g.setColor(Color.GREEN);
@@ -32,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
                 g.drawImage(r.image, r.x, r.y, null);
     }
     
-    public void run () {
+    public void run() {
         try {
             while (true) {
                 update();

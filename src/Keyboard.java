@@ -34,10 +34,10 @@ public class Keyboard implements KeyListener {
 
 	public void keyTyped(KeyEvent e) {}
 
-	public boolean isDown(int n) {
+	public boolean isDown(int key) {
 
-		if (n >= 0 && n < keys.length) {
-			return keys[n];
+		if (key >= 0 && key < keys.length) {
+			return keys[key];
 		}
 		
 		return false;

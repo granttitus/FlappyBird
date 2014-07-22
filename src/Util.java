@@ -8,7 +8,7 @@ public class Util {
 
     private static HashMap<String, Image> cache = new HashMap<String, Image>();
 
-    public static Image loadImage (String path) {
+    public static Image loadImage(String path) {
         Image image = null;
 
 		if (cache.containsKey(path)) {
