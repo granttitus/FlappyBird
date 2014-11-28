@@ -16,11 +16,25 @@ public class Game {
     private Bird bird;
     private ArrayList<Pipe> pipes;
     private Keyboard keyboard;
+    
+    private int score;
 
     public Game() {
         keyboard = Keyboard.getInstance();
         restart();
     }
+    
+    public boolean gameStarted(){
+    	   return started;
+    }
+    
+    public boolean gameOver(){
+    	   return gameover;
+    }
+    
+    public int getScore() {
+	      	return score;
+	   }
 
     public void restart() {
         paused = false;
@@ -142,6 +156,8 @@ public class Game {
         for (Pipe pipe : pipes) {
             if (pipe.collides(bird.x, bird.y, bird.width, bird.height))
                 gameover = true;
+            else if(pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south"))
+            	   score++;
         }
 
         // Ground + Bird collision
