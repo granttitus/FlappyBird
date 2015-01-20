@@ -2,12 +2,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Game {
- 
+
     public static final int PIPE_DELAY = 100;
 
     private Boolean paused;
-    private Boolean gameover;
-    private Boolean started;
 
     private int pauseDelay;
     private int restartDelay;
@@ -16,31 +14,22 @@ public class Game {
     private Bird bird;
     private ArrayList<Pipe> pipes;
     private Keyboard keyboard;
-    
-    private int score;
+
+    public int score;
+    public Boolean gameover;
+    public Boolean started;
 
     public Game() {
         keyboard = Keyboard.getInstance();
         restart();
     }
-    
-    public boolean gameStarted(){
-    	   return started;
-    }
-    
-    public boolean gameOver(){
-    	   return gameover;
-    }
-    
-    public int getScore() {
-	      	return score;
-	   }
 
     public void restart() {
         paused = false;
-        gameover = false;
         started = false;
+        gameover = false;
 
+        score = 0;
         pauseDelay = 0;
         restartDelay = 0;
         pipeDelay = 0;
@@ -48,7 +37,7 @@ public class Game {
         bird = new Bird();
         pipes = new ArrayList<Pipe>();
     }
-    
+
     public void update() {
         watchForStart();
 
@@ -61,10 +50,11 @@ public class Game {
         if (paused)
             return;
 
+        bird.update();
+
         if (gameover)
             return;
 
-        bird.update();
         movePipes();
         checkForCollisions();
     }
@@ -152,12 +142,13 @@ public class Game {
 
     private void checkForCollisions() {
 
-        // Pipe + Bird collision
         for (Pipe pipe : pipes) {
-            if (pipe.collides(bird.x, bird.y, bird.width, bird.height))
+            if (pipe.collides(bird.x, bird.y, bird.width, bird.height)) {
                 gameover = true;
-            else if(pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south"))
-            	   score++;
+                bird.dead = true;
+            } else if (pipe.x == bird.x && pipe.orientation.equalsIgnoreCase("south")) {
+                score++;
+            }
         }
 
         // Ground + Bird collision

@@ -9,11 +9,13 @@ public class Bird {
     public int width;
     public int height;
 
+    public boolean dead;
+
     public double yvel;
     public double gravity;
 
     private int jumpDelay;
-    private double rotation = 0.0;
+    private double rotation;
 
     private Image image;
     private Keyboard keyboard;
@@ -26,6 +28,8 @@ public class Bird {
         height = 32;
         gravity = 0.5;
         jumpDelay = 0;
+        rotation = 0.0;
+        dead = false;
 
         keyboard = Keyboard.getInstance();
     }
@@ -36,7 +40,7 @@ public class Bird {
         if (jumpDelay > 0)
             jumpDelay--;
 
-        if (keyboard.isDown(KeyEvent.VK_SPACE) && jumpDelay <= 0) {
+        if (!dead && keyboard.isDown(KeyEvent.VK_SPACE) && jumpDelay <= 0) {
             yvel = -10;
             jumpDelay = 10;
         }
