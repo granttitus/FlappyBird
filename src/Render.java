@@ -1,4 +1,5 @@
-import java.awt.*;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 public class Render {
