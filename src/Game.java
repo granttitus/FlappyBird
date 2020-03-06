@@ -154,6 +154,7 @@ public class Game {
         // Ground + Bird collision
         if (bird.y + bird.height > App.HEIGHT - 80) {
             gameover = true;
+            bird.dead = true;
             bird.y = App.HEIGHT - 80 - bird.height;
         }
     }
