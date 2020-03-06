@@ -11,7 +11,7 @@ public class Render {
     }
 
     public Render(int x, int y, String imagePath) {
-        Toolkit.getDefaultToolkit().sync();
+        fixToolkit.getDefaultToolkit().sync();
         this.x = x;
         this.y = y;
         this.image = Util.loadImage(imagePath);
