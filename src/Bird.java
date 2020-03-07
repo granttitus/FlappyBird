@@ -36,7 +36,9 @@ public class Bird {
 
     public void update() {
         if (this.dead) {
-            yvel = 0;
+            if (y < 385) {
+                y += 10;
+            }
         } else {
             yvel += gravity;
 
@@ -50,9 +52,6 @@ public class Bird {
 
             y += (int)yvel;
         }
-
-
-        System.out.println(yvel);
     }
 
     public Render getRender() {
