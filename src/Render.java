@@ -1,4 +1,5 @@
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 
 public class Render {
@@ -11,6 +12,7 @@ public class Render {
     }
 
     public Render(int x, int y, String imagePath) {
+        Toolkit.getDefaultToolkit().sync();
         this.x = x;
         this.y = y;
         this.image = Util.loadImage(imagePath);
