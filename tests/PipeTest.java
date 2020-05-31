@@ -63,6 +63,9 @@ public class PipeTest {
     }
     
     @After
-    public void tearDown() throws Exception { }
+    public void tearDown() throws Exception { 
+        southPipe = null;
+        northPipe = null;
+    }
     
 }

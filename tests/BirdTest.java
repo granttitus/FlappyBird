@@ -41,6 +41,8 @@ public class BirdTest {
     }
     
     @After
-    public void tearDown() throws Exception { }
+    public void tearDown() throws Exception {
+        bird = null;
+    }
     
 }
